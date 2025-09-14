@@ -1,0 +1,37 @@
+name: Build Kivy APK
+
+on:
+  workflow_dispatch:   # Permite lanzarlo manualmente
+  push:                # O cada vez que hagas push al repo
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y build-essential git zip unzip openjdk-17-jdk python3-pip python3-setuptools python3-wheel libffi-dev libssl-dev
+          pip install --upgrade pip
+          pip install buildozer cython
+
+      - name: Build APK
+        run: |
+          buildozer android debug
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: freestylefootballtouches-apk
+          path: bin/*.apk
