@@ -1,6 +1,6 @@
 [app]
-title = Freestyle Football Touches
-package.name = freestyle
+title = FS Touches
+package.name = fstouches
 package.domain = org.example
 source.dir = .
 source.include_exts = py,png,jpg,kv,atlas,json
@@ -12,3 +12,4 @@ fullscreen = 0
 [buildozer]
 log_level = 2
 warn_on_root = 1
+
