@@ -44,7 +44,7 @@ def save_score(points, level):
 class MainMenu(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.add_widget(Label(text="Freestyle Football Touches", font_size=32, pos_hint={"center_x":0.5, "center_y":0.8}))
+        self.add_widget(Label(text="FS Touches", font_size=32, pos_hint={"center_x":0.5, "center_y":0.8}))
         play_btn = Button(text="Play", pos_hint={"center_x":0.5, "center_y":0.6}, size_hint=(0.3, 0.1))
         scores_btn = Button(text="Scores", pos_hint={"center_x":0.5, "center_y":0.45}, size_hint=(0.3, 0.1))
         quit_btn = Button(text="Quit", pos_hint={"center_x":0.5, "center_y":0.3}, size_hint=(0.3, 0.1))
@@ -280,7 +280,7 @@ class ScoreScreen(Screen):
     def back_to_menu(self, instance):
         self.manager.current = "main"
 
-class FreestyleApp(App):
+class FSTouches(App):
     def build(self):
         sm = ScreenManager()
         sm.add_widget(MainMenu(name="main"))
@@ -291,4 +291,4 @@ class FreestyleApp(App):
         return sm
 
 if __name__ == "__main__":
-    FreestyleApp().run()
+    FSTouches().run()
